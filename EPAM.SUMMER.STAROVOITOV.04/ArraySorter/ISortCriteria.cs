@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ArraySorter
 {
+    /// <summary>
+    /// Exposes a method that create array with sort criteria.
+    /// </summary>
     public interface ISortCriteria
     {
         int[] ToCriteriaArray(int[][] jaggedArray);

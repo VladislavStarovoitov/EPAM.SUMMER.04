@@ -43,7 +43,10 @@
     <Compile Include="Direction.cs" />
     <Compile Include="ISortCriteria.cs" />
     <Compile Include="JaggedArraySorter.cs" />
+    <Compile Include="MaxElementCriteria.cs" />
+    <Compile Include="MinElementCriteria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SumCriteria.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
