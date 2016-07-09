@@ -68,6 +68,14 @@ namespace ArraySorter.Tests
 
             CollectionAssert.AreEqual(testArray, sortedArray, new Comparer());
         }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Sort_CriteriaIsNull_ArgumentNullException()
+        {
+            int[][] testArray = new int[3][] { new int[] { 1, 2, 3 }, new int[] { 1, 2, 0 }, new int[] { 4, 15, 9 } };
+            
+            JaggedArraySorter.SortJaggedArray(testArray, null, Direction.Ascending);
+        }
     }
 
 
