@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArraySorter", "ArraySorter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArraySorter.Tests", "ArraySorter.Tests\ArraySorter.Tests.csproj", "{77EDDC2C-E415-44A6-AE03-738EC33F4783}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleExtension", "DoubleExtension\DoubleExtension.csproj", "{7DE7BACB-0EA1-4FC0-AD10-FB31DAE12EDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{77EDDC2C-E415-44A6-AE03-738EC33F4783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77EDDC2C-E415-44A6-AE03-738EC33F4783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77EDDC2C-E415-44A6-AE03-738EC33F4783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DE7BACB-0EA1-4FC0-AD10-FB31DAE12EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE7BACB-0EA1-4FC0-AD10-FB31DAE12EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE7BACB-0EA1-4FC0-AD10-FB31DAE12EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE7BACB-0EA1-4FC0-AD10-FB31DAE12EDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
