@@ -24,8 +24,6 @@ namespace Customer
         {
             if (String.IsNullOrEmpty(format)) format = "G";
             if (formatProvider == null) formatProvider = CultureInfo.InvariantCulture;
-            if (format.Length == 1 && format != "G")
-                throw new FormatException();
             if (format == "G")
                 format = "NPR";
             if (format.Length > 3)
@@ -50,7 +48,7 @@ namespace Customer
                         result.Append(", ");
                         break;
                     case 'R':
-                        result.AppendFormat(formatProvider, "{0}", Revenue);
+                        result.AppendFormat(formatProvider, "{0:R}", Revenue.ToString());
                         result.Append(", ");
                         break;
                 }
