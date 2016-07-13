@@ -14,9 +14,9 @@ namespace ArraySorter.Tests
         {
             int[][] testArray = new int[3][] { new int[] { 1, 2, 3 }, new int[] { 1, 2 }, new int[] { 4, 15, 9 } };
             int[][] sortedArray = new int[3][] { new int[] { 1, 2 }, new int[] { 1, 2, 3 }, new int[] { 4, 15, 9 } };
-            ISortCriteria criteria = new SumCriteria();
+            var comparer = new SumAscComparer();
 
-            JaggedArraySorter.SortJaggedArray(testArray, criteria, Direction.Ascending);
+            JaggedArraySorter.SortJaggedArray(testArray, comparer);
 
             CollectionAssert.AreEqual(testArray, sortedArray, new Comparer());
         }
@@ -25,56 +25,45 @@ namespace ArraySorter.Tests
         public void SortBySumDsc()
         {
             int[][] testArray = new int[3][] { new int[] { 1, 2, 3 }, new int[] { 1, 2 }, new int[] { 4, 15, 9 } };
-            int[][] sortedArray = new int[3][] { new int[] { 4, 15, 9 }, new int[] { 1, 2, 3 }, new int[] { 1, 2 },};
-            ISortCriteria criteria = new SumCriteria();
+            int[][] sortedArray = new int[3][] { new int[] { 4, 15, 9 }, new int[] { 1, 2, 3 }, new int[] { 1, 2 }, };
+            var comparer = new SumDscComparer();
 
-            JaggedArraySorter.SortJaggedArray(testArray, criteria, Direction.Descending);
+            JaggedArraySorter.SortJaggedArray(testArray, comparer);
 
             CollectionAssert.AreEqual(testArray, sortedArray, new Comparer());
         }
 
         [TestMethod]
-        public void SortByMaxDsc()
+        public void SortByAbsMaxDsc()
         {
             int[][] testArray = new int[3][] { new int[] { 1, 2, 3 }, new int[] { 1, 2 }, new int[] { 4, 15, 9 } };
             int[][] sortedArray = new int[3][] { new int[] { 4, 15, 9 }, new int[] { 1, 2, 3 }, new int[] { 1, 2 }, };
-            ISortCriteria criteria = new MaxElementCriteria();
+            var comparer = new AbsMaxDscComparer();
 
-            JaggedArraySorter.SortJaggedArray(testArray, criteria, Direction.Descending);
+            JaggedArraySorter.SortJaggedArray(testArray, comparer);
 
             CollectionAssert.AreEqual(testArray, sortedArray, new Comparer());
         }
 
         [TestMethod]
-        public void SortByMaxAsc()
+        public void SortByAbsMaxAsc()
         {
             int[][] testArray = new int[3][] { new int[] { 1, 2, 3 }, new int[] { 1, 2 }, new int[] { 4, 15, 9 } };
             int[][] sortedArray = new int[3][] { new int[] { 1, 2 }, new int[] { 1, 2, 3 }, new int[] { 4, 15, 9 } };
-            ISortCriteria criteria = new MaxElementCriteria();
+            var comparer = new AbsMaxAscComparer();
 
-            JaggedArraySorter.SortJaggedArray(testArray, criteria, Direction.Ascending);
-
-            CollectionAssert.AreEqual(testArray, sortedArray, new Comparer());
-        }
-
-        [TestMethod]
-        public void SortByMinAsc()
-        {
-            int[][] testArray = new int[3][] { new int[] { 1, 2, 3 }, new int[] { 1, 2, 0 }, new int[] { 4, 15, 9 } };
-            int[][] sortedArray = new int[3][] { new int[] { 1, 2, 0 }, new int[] { 1, 2, 3 }, new int[] { 4, 15, 9 } };
-            ISortCriteria criteria = new MinElementCriteria();
-
-            JaggedArraySorter.SortJaggedArray(testArray, criteria, Direction.Ascending);
+            JaggedArraySorter.SortJaggedArray(testArray, comparer);
 
             CollectionAssert.AreEqual(testArray, sortedArray, new Comparer());
         }
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Sort_CriteriaIsNull_ArgumentNullException()
         {
             int[][] testArray = new int[3][] { new int[] { 1, 2, 3 }, new int[] { 1, 2, 0 }, new int[] { 4, 15, 9 } };
-            
-            JaggedArraySorter.SortJaggedArray(testArray, null, Direction.Ascending);
+
+            JaggedArraySorter.SortJaggedArray(testArray, null);
         }
     }
 

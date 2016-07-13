@@ -27,15 +27,15 @@ namespace ArraySorter
             {
                 for (int j = 0; j < jaggedArray.Length - 1 - i; j++)
                 {
-                    if (comparer.Compare(jaggedArray[j], jaggedArray[j + 1]) > 0)
+                    if (comparer.Compare(jaggedArray[j], jaggedArray[j + 1]) > 0) 
                     {
-                        Swap(jaggedArray[j],jaggedArray[j + 1]);
+                        Swap(ref jaggedArray[j], ref jaggedArray[j + 1]);
                     }
                 }
             }
         }
 
-        private static void Swap(int[] left, int[] right)
+        private static void Swap(ref int[] left, ref int[] right)
         {
             int[] temp;
             temp = left;

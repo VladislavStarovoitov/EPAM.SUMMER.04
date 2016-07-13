@@ -9,7 +9,7 @@ namespace ArraySorter
     /// <summary>
     /// Exposes a method that create array with sort criteria.
     /// </summary>
-    public interface ISortCriteria
+    public interface ISortCriteria: IComparer<int>
     {
         int[] ToCriteriaArray(int[][] jaggedArray);
     }
