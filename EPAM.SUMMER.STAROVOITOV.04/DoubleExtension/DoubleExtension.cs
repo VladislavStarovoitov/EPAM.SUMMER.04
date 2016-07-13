@@ -11,6 +11,8 @@ namespace Extensions
     /// </summary>
     public static class DoubleExtension
     {
+        private const int _oneInLeftBitInByte = 128;
+
         /// <summary>
         /// Convert double-precision floating point value to IEEE 754 binary format.
         /// </summary>
@@ -20,11 +22,11 @@ namespace Extensions
         {
             String result = String.Empty;
             byte[] bytes = BitConverter.GetBytes(value);
-            for (int i = 7; i > -1; i--)
+            for (int i = bytes.Length - 1; i > -1; i--)
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    result += (bytes[i] & (128 >> j)) > 0 ? "1" : "0";
+                    result += (bytes[i] & (_oneInLeftBitInByte >> j)) > 0 ? "1" : "0";
                 }
             }
             return result;
