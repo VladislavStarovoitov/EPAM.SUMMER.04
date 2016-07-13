@@ -17,29 +17,27 @@ namespace ArraySorter
         /// <param name="jaggedArray">Jagged array to sort.</param>
         /// <param name="criteria">The ISortCriteria implementation to use when creating array of criteria.</param>
         /// <param name="direction">Sorting direction.</param>
-        public static void SortJaggedArray(int[][] jaggedArray, ISortCriteria criteria, Direction direction)
+        public static void SortJaggedArray(int[][] jaggedArray, IComparer<int[]> comparer)
         {
-            if (criteria == null)
+            if (comparer == null)
             {
-                throw new ArgumentNullException("criteria");
-            }
-            int[] criteriaArray = criteria.ToCriteriaArray(jaggedArray);            
-            for (int i = 0; i < criteriaArray.Length - 1; i++)
+                throw new ArgumentNullException("comparer");
+            }            
+            for (int i = 0; i < jaggedArray.Length - 1; i++)
             {
-                for (int j = 0; j < criteriaArray.Length - 1 - i; j++)
+                for (int j = 0; j < jaggedArray.Length - 1 - i; j++)
                 {
-                    if (!(criteriaArray[j] > criteriaArray[j + 1] ^ direction == Direction.Ascending))
+                    if (comparer.Compare(jaggedArray[j], jaggedArray[j + 1]) > 0)
                     {
-                        Swap(ref criteriaArray[j], ref criteriaArray[j + 1]);
-                        Swap(ref jaggedArray[j], ref jaggedArray[j + 1]);
+                        Swap(jaggedArray[j],jaggedArray[j + 1]);
                     }
                 }
             }
         }
 
-        private static void Swap<T>(ref T left, ref T right)
+        private static void Swap(int[] left, int[] right)
         {
-            T temp;
+            int[] temp;
             temp = left;
             left = right;
             right = temp;
