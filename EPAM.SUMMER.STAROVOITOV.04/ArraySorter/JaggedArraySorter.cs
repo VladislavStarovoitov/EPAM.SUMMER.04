@@ -31,7 +31,6 @@ namespace ArraySorter
         /// </summary>
         /// <param name="jaggedArray">Jagged array to sort.</param>
         /// <param name="comparer">The IComparer<int[]> implementation to use when comparing elements.</param>
-        /// <param name="direction">Sorting direction.</param>
         public static void SortJaggedArray(int[][] jaggedArray, IComparer<int[]> comparer)
         {
             if (comparer == null || jaggedArray == null)
@@ -55,7 +54,6 @@ namespace ArraySorter
         /// </summary>
         /// <param name="jaggedArray">Jagged array to sort.</param>
         /// <param name="comparer">Delegate comparer that represents the method that compare elements.</param>
-        /// <param name="direction">Sorting direction.</param>
         public static void SortJaggedArray(int[][] jaggedArray, Func<int[], int[], int> comparer)
         {
             SortJaggedArray(jaggedArray, new Comparer(comparer));
