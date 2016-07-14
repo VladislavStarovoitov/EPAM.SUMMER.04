@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using ArraySorter;
 
@@ -63,7 +64,8 @@ namespace ArraySorter.Tests
         {
             int[][] testArray = new int[3][] { new int[] { 1, 2, 3 }, new int[] { 1, 2, 0 }, new int[] { 4, 15, 9 } };
 
-            JaggedArraySorter.SortJaggedArray(testArray, null);
+            IComparer<int[]> c = null;
+            JaggedArraySorter.SortJaggedArray(testArray, c);
         }
     }
 
