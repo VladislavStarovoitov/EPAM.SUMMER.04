@@ -11,15 +11,30 @@ namespace ArraySorter
     /// </summary>
     public static class JaggedArraySorter
     {
+        private class Comparer: IComparer<int[]>
+        {
+            private Func<int[], int[], int> _comparer;
+
+            public Comparer(Func<int[], int[], int> comparer)
+            {
+                _comparer = comparer;
+            }
+
+            public int Compare(int[] x, int[] y)
+            {
+                return _comparer(x, y); 
+            }
+        }
+
         /// <summary>
         /// Sort rows of jagged array by criterion and direction.
         /// </summary>
         /// <param name="jaggedArray">Jagged array to sort.</param>
-        /// <param name="criteria">The ISortCriteria implementation to use when creating array of criteria.</param>
+        /// <param name="comparer">The IComparer<int[]> implementation to use when comparing elements.</param>
         /// <param name="direction">Sorting direction.</param>
         public static void SortJaggedArray(int[][] jaggedArray, IComparer<int[]> comparer)
         {
-            if (comparer == null)
+            if (comparer == null || jaggedArray == null)
             {
                 throw new ArgumentNullException("comparer");
             }            
@@ -35,9 +50,20 @@ namespace ArraySorter
             }
         }
 
+        /// <summary>
+        /// Sort rows of jagged array by criterion and direction.
+        /// </summary>
+        /// <param name="jaggedArray">Jagged array to sort.</param>
+        /// <param name="comparer">Delegate comparer that represents the method that compare elements.</param>
+        /// <param name="direction">Sorting direction.</param>
+        public static void SortJaggedArray(int[][] jaggedArray, Func<int[], int[], int> comparer)
+        {
+            SortJaggedArray(jaggedArray, new Comparer(comparer));
+        }
+
         private static void Swap(ref int[] left, ref int[] right)
         {
-            int[] temp;
+            int[] temp; 
             temp = left;
             left = right;
             right = temp;
