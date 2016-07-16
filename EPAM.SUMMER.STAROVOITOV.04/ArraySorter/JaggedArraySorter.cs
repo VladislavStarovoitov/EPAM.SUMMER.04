@@ -13,9 +13,9 @@ namespace ArraySorter
     {
         private class Comparer: IComparer<int[]>
         {
-            private Func<int[], int[], int> _comparer;
+            private Comparison<int[]> _comparer;
 
-            public Comparer(Func<int[], int[], int> comparer)
+            public Comparer(Comparison<int[]> comparer)
             {
                 _comparer = comparer;
             }
@@ -35,7 +35,7 @@ namespace ArraySorter
         {
             if (comparer == null || jaggedArray == null)
             {
-                throw new ArgumentNullException("comparer");
+                throw new ArgumentNullException(nameof(comparer));
             }            
             for (int i = 0; i < jaggedArray.Length - 1; i++)
             {
@@ -54,7 +54,7 @@ namespace ArraySorter
         /// </summary>
         /// <param name="jaggedArray">Jagged array to sort.</param>
         /// <param name="comparer">Delegate comparer that represents the method that compare elements.</param>
-        public static void SortJaggedArray(int[][] jaggedArray, Func<int[], int[], int> comparer)
+        public static void SortJaggedArray(int[][] jaggedArray, Comparison<int[]> comparer)
         {
             SortJaggedArray(jaggedArray, new Comparer(comparer));
         }

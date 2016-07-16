@@ -14,7 +14,7 @@ namespace ArraySorter.Tests
         [TestCaseSource(typeof(DataProvider), nameof(DataProvider.GetArrayForSortingBySumAscWithDelegateComparer))]
         public void SortBySumAscWithDelegateComparer(int[][] testArray, int[][] sortedArray)
         {
-            Func<int[], int[], int> comparer = DelegateComparer.SortBySumAsc;
+            Comparison<int[]> comparer = DelegateComparer.SortBySumAsc;
 
             JaggedArraySorterNext.SortJaggedArray(testArray, comparer);
 
